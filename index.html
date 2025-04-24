@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>2 місяці разом, Ангеліна!</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+      color: white;
+      font-family: 'Great Vibes', cursive;
+      text-align: center;
+      min-height: 150vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #ff4f8b;
+      text-shadow: 0 0 10px #ff4f8b, 0 0 20px #ff4f8b;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin: 15px;
+    }
+
+    .heart {
+      width: 70px;
+      height: 60px;
+      background: red;
+      position: relative;
+      transform: rotate(-45deg);
+      animation: pulse 1s infinite;
+      box-shadow: 0 0 20px red;
+      margin: 20px auto;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 70px;
+      height: 60px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before {
+      top: -35px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 35px;
+      top: 0;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1) rotate(-45deg); }
+      50% { transform: scale(1.1) rotate(-45deg); }
+      100% { transform: scale(1) rotate(-45deg); }
+    }
+
+    .button, .surprise-btn {
+      background-color: transparent;
+      border: 2px solid #ff4f8b;
+      color: #ff4f8b;
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-shadow: 0 0 5px #ff4f8b;
+      max-width: 90vw;
+    }
+
+    .button:hover, .surprise-btn:hover {
+      background-color: #ff4f8b;
+      color: white;
+      box-shadow: 0 0 20px #ff4f8b;
+    }
+
+    .surprise-btn {
+      margin-top: 40px;
+      font-size: 1rem;
+      animation: fadeInUp 3s ease-in-out infinite;
+      background: none;
+      border: 2px dashed #ff4f8b;
+    }
+
+    @keyframes fadeInUp {
+      0%, 100% { opacity: 0.6; transform: translateY(10px); }
+      50% { opacity: 1; transform: translateY(0); }
+    }
+
+    .falling-heart {
+      position: fixed;
+      font-size: 40px;
+      animation: fall 6s linear forwards;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(100vh) scale(0.7); opacity: 0; }
+    }
+
+    #message {
+      margin-top: 40px;
+      font-size: 1.3rem;
+      color: #ff4f8b;
+      text-shadow: 0 0 10px #ff4f8b;
+      display: none;
+      padding: 0 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>З 2 місяцями знайомства, Ангеліна!</h1>
+    <div class="heart"></div>
+    <p>Вже пройшло два чудових місяці з того моменту, як ми познайомились — і кожна мить була особливою завдяки тобі!</p>
+    <p>Ти неймовірна, ніжна, яскрава — і я безмежно щасливий, що ти є в моєму житті.</p>
+    <p>Твої очі світяться теплом, твоя усмішка — найкраще, що я бачив. Кожен день із тобою — це подарунок, кожне слово — мелодія для мого серця.</p>
+    <p>Ти — моє натхнення, моє сонечко в похмурий день і зірочка вночі. Я вдячний долі за тебе, за кожну хвилину, проведену разом.</p>
+    <p>Я мрію й надалі творити з тобою найкращі спогади, розділяти мрії та перетворювати їх на реальність. Ти — моя казка, що стала правдою ♥</p>
+
+    <button class="button" onclick="alert('Ти найкраща дівчина на світі, кохаю тебе')">Натисни, якщо посміхнулась</button>
+
+    <button class="surprise-btn" onclick="showSurprise()">Тицяй сюди</button>
+    <div id="message">І пам'ятай: найкраще тільки попереду, моя зіронька!</div>
+  </div>
+
+  <script>
+    function showSurprise() {
+      for (let i = 0; i < 50; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'falling-heart';
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.style.top = '-30px';
+        heart.style.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+        heart.innerText = '❤';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+      document.getElementById("message").style.display = 'block';
+    }
+  </script>
+</body>
+</html>
